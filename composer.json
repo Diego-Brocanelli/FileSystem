@@ -1,0 +1,23 @@
+{
+    "name": "diego/file-system",
+    "description": "Directory manipulation in a simpler way, using the concepts of OOP.",
+    "type":"Library",
+    "license": "BSD 3",
+    "version":"1.0",
+    "homepage": "https://github.com/Diego-Brocanelli/FileSystem",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Diego Brocanelli",
+            "email": "diegod2@msn.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "5.5.*"
+    },
+    "autoload": {
+        "psr-4":{
+            "FileSystem\\":"src/"
+        }
+    }
+}

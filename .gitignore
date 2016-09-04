@@ -1,0 +1,5 @@
+implementation.txt
+composer.lock
+index.php
+/vendor
+tests/_reports
