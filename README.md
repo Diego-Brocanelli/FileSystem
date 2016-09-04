@@ -85,22 +85,23 @@ $dir->setPathName($path);
 $dir->isDir(); //return: boolean
 ```
 
-## @todo 
+## @toDo 
+#### Folder
+- [X] Create
+- [X] Delete
+- [X] Move
+- [X] Exist
+- [X] isDir
 
-    * [ X ] Folder
-        * [X] Create
-        * [X] Delete
-        * [X] Move
-        * [X] Exist
-        * [X] isDir
-    * [ ] File
-        * [ ] Create
-        * [ ] Delete
-        * [ ] Move
-        * [ ] Exist
-        * [ ] isFile
-        * [ ] isExecutable
-        * [ ] isReadable
-        * [ ] isWritable
-    * [ ] Compress
-        * [ ] Zip
+#### File
+- [ ] Create
+- [ ] Delete
+- [ ] Move
+- [ ] Exist
+- [ ] isFile
+- [ ] isExecutable
+- [ ] isReadable
+- [ ] isWritable
+
+#### Compress
+- [ ] Zip
