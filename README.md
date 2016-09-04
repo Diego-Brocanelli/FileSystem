@@ -87,19 +87,20 @@ $dir->isDir(); //return: boolean
 
 ## @todo 
 
-    [ X ] Folder
-        [X] Create
-        [X] Delete
-        [X] Move
-        [X] Exist
-        [X] isDir
-    - File
-        [ ] 
-        [ ] 
-        [ ] 
-        [ ] 
-        [ ] 
-        [ ] 
-        [ ] 
-    - Compress
-        [ ] Zip
+    * [ X ] Folder
+        * [X] Create
+        * [X] Delete
+        * [X] Move
+        * [X] Exist
+        * [X] isDir
+    * [ ] File
+        * [ ] Create
+        * [ ] Delete
+        * [ ] Move
+        * [ ] Exist
+        * [ ] isFile
+        * [ ] isExecutable
+        * [ ] isReadable
+        * [ ] isWritable
+    * [ ] Compress
+        * [ ] Zip
