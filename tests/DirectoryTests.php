@@ -2,7 +2,8 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-use FileSystem\Directory\Dir;
+use FileSystem\Directory\Directory;
+use FileSystem\FileSystem;
 use PHPUnit\Framework\TestCase;
 
 class DirectoryTests extends TestCase
@@ -15,12 +16,11 @@ class DirectoryTests extends TestCase
     {
         $this->createDirectoryCopy();
 
-        $directoryName = 'dir_'.date('H_i_s');
-        $path          = self::BASE_PATH.$directoryName;
+        $name = 'dir_'.date('H_i_s');
 
-        $this->directory = new Dir();
-
-        $this->directory->setPathName($path);
+        $fileSystem = new FileSystem($name, self::BASE_PATH);
+        
+        $this->directory = new Directory($fileSystem);
     }
     
     public function testCreateDir()
@@ -39,16 +39,16 @@ class DirectoryTests extends TestCase
 
     public function testDirectoryExist()
     {
-        $this->assertEquals( true, $this->directory->exist() );
+        $this->assertEquals( true, $this->directory->exists() );
     }
 
     public function testDirectoryNotExist()
     {
-        $directory = new Dir();
+        $fileSystem = new FileSystem('dir_not_found', __DIR__.'/dir_not_found');
+        
+        $directory = new Directory($fileSystem);
 
-        $directory->setPathName(__DIR__.'/dir_not_found');
-
-        $this->assertEquals(false , $directory->exist() );    
+        $this->assertEquals(false , $directory->exists() );    
     }
 
     public function testIsDir()
@@ -56,17 +56,12 @@ class DirectoryTests extends TestCase
         $this->assertEquals( true, $this->directory->isDir() );
     }
 
-    /**
-     * @expectedException FileSystem\Exception\Directory
-     * @expectedExceptionMessage Directory not found
-     */
     public function testIsNotDir()
     {
-        $directory = new Dir();
+        $fileSystem = new FileSystem('dir_not_found', __DIR__);
+        $directory  = new Directory($fileSystem);
 
-        $directory->setPathName(__DIR__.'/dir_not_found');
-
-        $directory->isDir();   
+        $this->assertEquals( false, $directory->isDir() );
     }
 
     public function testDeleteDirectory()
@@ -80,23 +75,23 @@ class DirectoryTests extends TestCase
      */
     public function testeDeleteDirectoryThatDoesNotExist()
     {
-        $directory = new Dir();
-
-        $directory->setPathName(__DIR__.'/dir_not_found');
+        $fileSystem = new FileSystem('dir_not_found', __DIR__);
+        $directory = new Directory($fileSystem);
 
         $directory->delete();
     }
 
     public function testMoveDirectory()
     {
-        $directoryName = 'dir_'.date('H_i_s');
-        $path          = self::BASE_PATH.$directoryName;
+        $name = 'dir_'.date('H_i_s');
+        $path = self::BASE_PATH;
 
-        $this->directory = new Dir();
-        $this->directory->setPathName($path);
+        $fileSystem = new FileSystem($name, $path);
+        
+        $this->directory = new Directory($fileSystem);
         $this->directory->create();
 
-        $destinyPath = self::BASE_PATH.'copy/'.$directoryName;
+        $destinyPath = self::BASE_PATH.'copy/'.$name;
 
         $this->assertEquals(true, $this->directory->move( $destinyPath ) );    
     }
@@ -107,13 +102,14 @@ class DirectoryTests extends TestCase
      */
     public function testeMoveDirectoryOriginNotFound()
     {
-        $directoryName = 'dir_'.date('H_i_s');
-        $path          = self::BASE_PATH.$directoryName;
+        $name = 'dir_'.date('H_i_s');
+        $path = self::BASE_PATH.$name;
 
-        $this->directory = new Dir();
-        $this->directory->setPathName($path);
+        $fileSystem = new FileSystem($name, $path);
+        
+        $this->directory = new Directory($fileSystem);
 
-        $destinyPath = self::BASE_PATH.'copy/'.$directoryName;
+        $destinyPath = self::BASE_PATH.'copy/'.$name;
 
         $this->directory->move( $destinyPath );
     }
@@ -124,14 +120,15 @@ class DirectoryTests extends TestCase
      */
     public function testMoveDirectoryDestinyNotOverwrite()
     {
-        $directoryName = 'dir_'.date('H_i_s');
-        $path          = self::BASE_PATH.$directoryName;
+        $name = 'dir_'.date('H_i_s');
+        $path = self::BASE_PATH;
 
-        $this->directory = new Dir();
-        $this->directory->setPathName($path);
+        $fileSystem = new FileSystem($name, $path);
+
+        $this->directory = new Directory($fileSystem);
         $this->directory->create();
 
-        $destinyPath = self::BASE_PATH.'copy/'.$directoryName;
+        $destinyPath = self::BASE_PATH.'copy/'.$name;
 
         $this->directory->move( $destinyPath );
 

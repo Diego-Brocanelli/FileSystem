@@ -7,25 +7,62 @@ abstract class AbstractFileSystem
     /**
      * @var string
      */
-    private $pathName;
+    protected $name;
+    
+    /**
+     * @var string
+     */
+    protected $path;
 
     /**
-     * Set path name.
-     *  
-     * @param $path path name
+     * Set name directory.
+     * 
+     * @param string $name
+     * @return void
      */
-    public function setPathName($pathName)
+    public function setName($name)
     {
-        $this->pathName = $pathName;
+        $this->name = $name;
     }
     
     /**
-     * Return path name.
+     * Return name directory.
      * 
-     * @return strung return path name.
+     * @return string
      */
-    public function getPathName()
+    public function getName()
     {
-        return $this->pathName;
+        return $this->name;
+    }
+    
+    /**
+     * Set path.
+     * 
+     * @param type $path
+     * @return void
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+    }
+    
+    /**
+     * Return path.
+     * 
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+    
+    /**
+     * Return absolute path.
+     * 
+     * @return string
+     */
+    public function getAbsolutePath()
+    {
+        return $this->getPath().'/'.$this->getName();
     }
 }
