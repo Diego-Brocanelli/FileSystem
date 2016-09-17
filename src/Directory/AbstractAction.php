@@ -90,6 +90,6 @@ abstract class AbstractAction implements ActionInterface
      */
     public function exists()
     {
-       return ( file_exists( $this->fileSystem->getAbsolutePath() ) ); 
+       return file_exists( $this->fileSystem->getAbsolutePath() ); 
     }
 }

@@ -17,14 +17,4 @@ class Directory extends Action
     {
         parent::__construct($fileSsytem);
     }
-    
-    /**
-     * Verify is dir.
-     * 
-     * @return boolean
-     */
-    public function isDir()
-    {
-        return is_dir( $this->fileSystem->getAbsolutePath() );
-    }
 }

@@ -14,8 +14,6 @@ class DirectoryTests extends TestCase
 
     public function setUp()
     {
-        $this->createDirectoryCopy();
-
         $name = 'dir_'.date('H_i_s');
 
         $fileSystem = new FileSystem($name, self::BASE_PATH);
@@ -131,23 +129,5 @@ class DirectoryTests extends TestCase
         $destinyPath = self::BASE_PATH.'copy/'.$name;
 
         $this->directory->move( $destinyPath );
-
-        $this->directory->move( $destinyPath, true );
-    }
-
-    /**
-     * Create the copy directory for testing.
-     * 
-     * @return void
-     */
-    private function createDirectoryCopy()
-    {
-        $path = self::BASE_PATH.'copy';
-        
-        if( !file_exists( $path ) ){
-            $directory = new Dir();
-            $directory->setPathName( $path );
-            $directory->create();
-        }
     }
 }

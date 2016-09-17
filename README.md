@@ -2,6 +2,11 @@
 
 Directory manipulation in a simpler way, using the concepts of OOP.
 
+## Require
+
+- PHP >= 5.3.8
+- mbstring extension
+
 ## Instalation
 ```
 composer install

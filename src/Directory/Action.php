@@ -25,6 +25,6 @@ class Action extends AbstractAction
      */
     public function isDir()
     {
-        return is_dir( $this->fileSsytem->getAbsolutePath() );
+        return is_dir( $this->fileSystem->getAbsolutePath() );
     }
 }
