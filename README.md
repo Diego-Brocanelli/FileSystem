@@ -164,12 +164,14 @@ echo $sanitize->convertSpecialCharacters($string); // Return: aEiO
 - [X] Move
 - [X] Exist
 - [X] isDir
+- [X] Tests
 
 #### Sanitize
 - [X] Sanitize String
 - [X] String To lower
 - [X] Spaces To Underscore
 - [X] Convert Special Characters
+- [X] Tests
 
 #### File
 - [ ] Create
